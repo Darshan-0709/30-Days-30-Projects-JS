@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background: url(crowd_background.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.layer {
+    background-color: rgba(0, 0, 0, 0.616);
+    position: absolute;
+    inset: 0;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.key {
+    color: white;
+    width: 5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border:  .3rem solid black;
+    display: flex;
+    margin: 0 .4rem;
+    flex-direction: column;
+    transition: all 120ms ease-in-out;
+}
+.playing {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 0, 0.834);
+    box-shadow: 0 0 .5rem yellow;
+}
+.sound {
+    font-size: 1rem;
+    color: yellow;
+}
