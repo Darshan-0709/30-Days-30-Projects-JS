@@ -57,7 +57,7 @@ body {
 .panel p:nth-child(2) {
     font-size: 3rem;
     font-weight: 600;
-    transition: font-size 200ms ease-in-out;
+    /* transition: font-size 100ms ease-in-out; */
 }
 .panel:hover p:nth-child(2) {
     font-size: 5rem;
