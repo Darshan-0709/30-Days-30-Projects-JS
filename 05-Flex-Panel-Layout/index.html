@@ -38,6 +38,12 @@
 
   <script>
     const panels = document.querySelectorAll('.panel');
+
+    // function textJump(event){
+    //   console.log('hey')
+    //   console.log(event.propertyName);
+    // }
+
     panels.forEach(panel => {
         panel.addEventListener('mouseenter', ()=> {
             panel.classList.add('open-active');
@@ -45,9 +51,6 @@
         panel.addEventListener('mouseleave', () => {
             panel.classList.remove('open-active');
         });
-        panel.addEventListener('transitionend', (e)=> {
-            console.log(e.porpertyName)
-        })
     })
   </script>
 
