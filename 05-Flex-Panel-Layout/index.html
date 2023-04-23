@@ -38,15 +38,16 @@
 
   <script>
     const panels = document.querySelectorAll('.panel');
-    console.log(panels);
     panels.forEach(panel => {
         panel.addEventListener('mouseenter', ()=> {
-            console.log(panel);
             panel.classList.add('open-active');
         });
         panel.addEventListener('mouseleave', () => {
             panel.classList.remove('open-active');
         });
+        panel.addEventListener('transitionend', (e)=> {
+            console.log(e.porpertyName)
+        })
     })
   </script>
 
