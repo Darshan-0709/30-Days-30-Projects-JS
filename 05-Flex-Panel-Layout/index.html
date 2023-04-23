@@ -45,12 +45,22 @@
     // }
 
     panels.forEach(panel => {
-        panel.addEventListener('mouseenter', ()=> {
-            panel.classList.add('open-active');
-        });
-        panel.addEventListener('mouseleave', () => {
-            panel.classList.remove('open-active');
-        });
+        // This code below uses more coder then oneother but works perfectly fine
+        // but you have to add delay in css class('open-active')
+          panel.addEventListener('mouseenter', ()=> {
+              panel.classList.add('open-active');
+          });
+          panel.addEventListener('mouseleave', () => {
+              panel.classList.remove('open-active');
+          });
+
+        // this code below uses less code. You don't need to add delay in the css class
+        // but when you hover on the element fast sometimes text will get stuck
+          // panel.addEventListener('transitionend', (e)=> {
+          //   if(e.propertyName.includes('flex')){
+          //     panel.classList.toggle('open-active')
+          //   }
+          // });
     })
   </script>
 
