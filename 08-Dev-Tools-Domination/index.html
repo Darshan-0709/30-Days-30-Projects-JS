@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log('hey There! I am a %s emoji!', '😁')
+
+    // Styled
+    console.log('%c This is some text', 'color:#BADA55; font-size:20px; border:2px solid red')
+
+    // warning!
+    console.warn('OH NOO');
+    
+    // Error :|
+    console.error('Shit happens');
+
+    // Info
+    console.info('The bumblebee bat is the world’s smallest mammal')
+
+    // Testing
+    const p = document.querySelector('p'); 
+    console.assert(p.classList.contains('ouch'), 'That is 100% wrong!');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+
+    // Grouping together
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.groupEnd(`${dog.name}`);
+    })
+    
+    // counting
+    console.count('tony')
+    console.count('benner')
+    console.count('steve')
+    console.count('tony')
+    console.count('tony')
+    console.count('steve')
+    console.count('steve')
+    console.count('benner')
+    console.count('benner')
+    console.count('benner')
+    console.count('benner')
+    console.count('tony')
+
+    // timing
+    let i = 0;  
+    console.time(i);
+    for (let i = 0; i < 100; i++) {
+        console.log(`i = ${i}`);
+    };
+    console.timeEnd(i);
+
+    console.log(' ')
+    console.log(' ')
+    console.log(' ')
+  </script>
+</body>
+</html>
