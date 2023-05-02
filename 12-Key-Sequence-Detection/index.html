@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    .image{
+        position: absolute;
+        inset: 0;
+        background: url(https://images.unsplash.com/photo-1496670013738-4f730477bfdb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+        background-repeat: no-repeat;
+        background-size: cover;        
+    }
+    .none {
+        display: none;
+    }
+    .visible{
+        display: inline-block;
+        z-index: -1;
+    }
+</style>
+<body>
+    <p>
+        press / type -  moon 
+    </p>
+    <div class="image none">
+        
+    </div>
+<script>
+    const serectCode = 'moon';
+    const img = document.querySelector('.image')
+    let keys = []; 
+    window.addEventListener('keyup', (e) => {
+        // console.log(e.key);
+        keys.push(e.key);
+        keys.splice(-serectCode.length - 1, keys.length - serectCode.length );
+        console.log(keys.join(''))
+        if(keys.join('').includes(serectCode)) img.classList.add('visible');
+        // cornify_add();
+    })
+</script>
+</body>
+</html>
