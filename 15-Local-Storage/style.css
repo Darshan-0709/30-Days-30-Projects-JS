@@ -60,9 +60,9 @@ html {
   .plates input {
     display: none;
   }
-  
+  /* ⬜️ */
   .plates input + label:before {
-    content: "⬜️";
+    content: "⚪";
     margin-right: 10px;
   }
   
@@ -78,4 +78,23 @@ html {
     padding: 10px;
     outline: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .buttons {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .buttons > *{
+    background: none;
+    border: none;
+    padding: .4rem;
+    border: 2px solid gray;
+    transition: background-color 100ms ease-in-out;
+  }
+
+  .buttons > *:hover {
+    background-color: rgba(128, 128, 128, 0.783);
+    cursor: pointer;
   }
