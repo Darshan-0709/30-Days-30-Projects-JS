@@ -6,7 +6,32 @@
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-
+  <div class="shortcuts">
+    <table>
+      <tbody>
+        <tr>
+          <th>Say this</th>
+          <th>To print this</th>
+        </tr>
+        <tr>
+          <td>what is...</td>
+          <td>to Calculate</td>
+        </tr>
+        <tr>
+          <td>space date</td>
+          <td>Today's date</td>
+        </tr>
+        <tr>
+          <td>space month</td>
+          <td>Current Month</td>
+        </tr>
+        <tr>
+          <td>space year</td>
+          <td>Current Year</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="words" contenteditable>
   </div>
 
@@ -20,6 +45,12 @@
     let p = document.createElement('p');
     const words = document.querySelector('.words');
     words.appendChild(p);
+
+    function compute(transcript){
+      const numbers = transcript.replace('what is', '',).replace(' x', '*');
+      return eval(numbers);
+    }
+    
     recognition.addEventListener('result', e=> {
       transcript = Array.from(e.results)
       .map(result => result[0])
@@ -27,12 +58,26 @@
       .join('');
 
       p.textContent = transcript;
+      const date = new Date();
 
       if(e.results[0].isFinal){
+        if(transcript.includes('space date')){
+          p.innerHTML = date.getDate();
+        }
+        if(transcript.includes('space month')){
+          p.innerHTML = date.getMonth();
+        }
+        if(transcript.includes('space year')){
+          p.innerHTML = date.getFullYear();
+        }
+        if(transcript.includes('what is')){
+          console.log('what!');
+          p.innerHTML = compute(transcript);
+
+        }
         p = document.createElement('p');
         words.appendChild(p);
       }
-      console.log(transcript);
     });
     
     recognition.addEventListener('end', recognition.start);
@@ -48,9 +93,10 @@
 
     body {
       background: #ffc600;
-      font-family: 'helvetica neue';
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       font-weight: 200;
-      font-size: 20px;
+      font-size: 2rem;
+      position: relative;
     }
 
     .words {
@@ -66,8 +112,21 @@
       line-height: 3rem;
     }
 
+    table {
+      border: .3rem solid black;
+      padding: .2rem .6rem;
+    }
+    table {
+      font-size: 3rem;
+    }
+
     p {
+      font-size: 3rem;
       margin: 0 0 3rem;
+    }
+
+    th:not(:first-child), td:not(:first-child) {
+      padding-left: 1.5rem;
     }
 
     .words:before {
@@ -79,6 +138,9 @@
       bottom: 0;
       border: 1px solid;
       border-color: transparent #efe4e4;
+    }
+    .shorcuts{
+      position: absolute;
     }
   </style>
 
