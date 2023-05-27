@@ -59,11 +59,15 @@
     const navTop = nav.offsetTop;
 
     function fixNav(e){
-        console.log(window.scrollY, navTop)
+        console.log();
         if(Math.round(window.scrollY) >= navTop){
             document.body.classList.add('sticky-nav');
+            // you don't need to add extra JS code if you use postion:'sticky on nav';
+            // if you use position : 'fixed' use the code below
+            // nav.style.paddingTop = nav.offsetHeight + 'px';
         }else{
             document.body.classList.remove('sticky-nav');
+            nav.style.paddingTop = 0;
         }
     }
 
