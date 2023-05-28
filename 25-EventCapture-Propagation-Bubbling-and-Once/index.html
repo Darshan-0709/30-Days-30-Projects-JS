@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+  <button>click</button>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+<script>
+    const divs = document.body.querySelectorAll('div');
+    const btn = document.body.querySelector('button');
+
+    function showText(e) {
+        console.log(this.classList.value);
+    }
+
+    divs.forEach(div=> {
+        div.addEventListener('click', showText,{capture : true});
+    });
+
+    btn.addEventListener('click', ()=>{
+        console.log('Once clicked');
+    }, {
+        once : true
+    } )
+
+</script>
+</body>
+</html>
