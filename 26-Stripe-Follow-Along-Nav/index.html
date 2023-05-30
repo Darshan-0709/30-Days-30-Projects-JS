@@ -152,8 +152,8 @@
   }
 
   .dropdownBackground {
-    width: 100px;
-    height: 100px;
+    width:100px;
+    height:100px;
     position: absolute;
     background: #fff;
     border-radius: 4px;
@@ -230,15 +230,42 @@
     const nav = document.querySelector('.top');
 
     function handleEnter(e) {
-        const dropdown = this.querySelector('.dropdown')
-        console.log(dropdown);
-        dropdown.classList.add('show');
+      this.classList.add('trigger-enter');
+      background.classList.add('open');
+      setTimeout(() => {
+        // && will prevent for going farther is there there is no trigger-enter class
+        this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active');
+
+        // simplyfy the code 
+
+        // if(this.classList.contains('trigger-enter')){
+        //   this.classList.add('trigger-enter-active');
+        // }
+      }, 150);
+
+      const dropdown = this.querySelector('.dropdown');
+      const dropdownCoords = dropdown.getBoundingClientRect();
+      const navCoords = nav.getBoundingClientRect();
+      
+      const coords = {
+        width : dropdownCoords.width,
+        height : dropdownCoords.height,
+        // we are removeing the nav
+        top : dropdownCoords.top + window.scrollY - navCoords.top,
+        left : dropdownCoords.left + window.scrollX - navCoords.left,
+        bottom : dropdownCoords.bottom + window.scrollX - navCoords.bottom
+      }
+
+      console.log(coords.bottom);
+      
+      background.style.setProperty('width', `${coords.width}px`);    
+      background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+      background.style.setProperty('height', `${coords.height}px`);
     }
 
     function handleLeave(e) {
-        const dropdown = this.querySelector('.dropdown')
-        console.log(dropdown);
-        dropdown.classList.remove('show');
+      background.classList.remove('open');
+      this.classList.remove('trigger-enter', 'trigger-enter-active');
     }
 
 triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
