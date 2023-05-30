@@ -250,10 +250,10 @@
       const coords = {
         width : dropdownCoords.width,
         height : dropdownCoords.height,
-        // we are removeing the nav
+        // we are removeing the nav so if there is someting else before nav it will calculate it self
+        
         top : dropdownCoords.top + window.scrollY - navCoords.top,
         left : dropdownCoords.left + window.scrollX - navCoords.left,
-        bottom : dropdownCoords.bottom + window.scrollX - navCoords.bottom
       }
 
       console.log(coords.bottom);
